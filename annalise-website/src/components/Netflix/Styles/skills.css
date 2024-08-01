@@ -1,14 +1,23 @@
 .browse {
     padding: 20px;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
     width: 100vw;
-    position: relative;
 }
 
 .browse h2 {
     margin-bottom: 10px;
     color: #fff;
+}
+
+.entire {
+    margin-top: 100px;
+    height: calc(100vh - 100px);
+    
+
+    overflow: scroll;
+    margin-bottom: 100px;
+
 }
 
 .browse-row-language, .browse-row-skill {
@@ -20,6 +29,7 @@
     scroll-behavior: smooth;
 
     width: 100%;
+
 }
 
 .placeholder-box {
@@ -45,14 +55,18 @@
     transition: opacity 0.3s ease;
 }
 
-.image-c, .image-java, .image-js, .image-py, .image-r, .image-sh {
+.image-c, .image-java, .image-js, .image-py, .image-r, .image-sh, .image-word, .image-cpp, .image-outlook, .image-excel,
+    .image-powerpoint {
     object-position: top left;
 }
 
-.image-cpp {
-    object-position: top left;
+.image-flask {
+    object-position: -170px center;
 }
 
+.image-sqlite {
+    object-position: -85px center;
+}
 
 .scroll-indicator-language-end, .scroll-indicator-skill-end {
     position: absolute;

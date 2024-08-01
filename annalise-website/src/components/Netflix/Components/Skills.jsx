@@ -19,6 +19,20 @@ import enthusiasticImg from '../Pictures/enthusiastic.png';
 import conflictImg from '../Pictures/conflict.png';
 import timeImg from '../Pictures/time.png';
 import creativeImg from '../Pictures/creative.png';
+import wordImg from '../Pictures/word.png';
+import outlookImg from '../Pictures/outlook.png';
+import excelImg from '../Pictures/excel.png';
+import cyberImg from '../Pictures/cyber.png';
+import powerpointImg from '../Pictures/powerpoint.png';
+import htmlImg from '../Pictures/html.png';
+import cssImg from '../Pictures/css.png';
+import reactImg from '../Pictures/react.png';
+import canvaImg from '../Pictures/canva.png';
+import flaskImg from '../Pictures/flask.png';
+import neoImg from '../Pictures/neo.png';
+import mongoImg from '../Pictures/mongo.png';
+import sqlite from '../Pictures/sqlite.png';
+import mysql from '../Pictures/mysql.png';
 
 
 const placeholders = [
@@ -41,6 +55,24 @@ const softSkills = [
     { src: conflictImg, className: 'image-conflict', title: 'Conflict Resolution'},
     { src: timeImg, className: 'image-time', title: 'Time Management'},
     { src: creativeImg, className: 'image-creative', title: 'Creativity'}
+]
+
+const techSkills = [
+    { src: wordImg, className: 'image-word', title: 'Microsoft Word'},
+    { src: outlookImg, className: 'image-outlook', title: 'Microsoft Outlook'},
+    { src: excelImg, className: 'image-excel', title: 'Excel'},
+    { src: powerpointImg, className: 'image-powerpoint', title: 'Powerpoint'},
+    { src: htmlImg, className: 'image-html', title: 'HTML'},
+    { src: cssImg, className: 'image-css', title: 'CSS'},
+    { src: cyberImg, className: 'image-cyber', title: 'Cybersecurity'},
+    { src: reactImg, className: 'image-react', title: 'React'},
+    { src: canvaImg, className: 'image-canva', title: 'Canva'},
+    { src: flaskImg, className: 'image-flask', title: 'Flask'},
+    { src: neoImg, className: 'image-neo', title: 'Neo4j'},
+    { src: mongoImg, className: 'image-mongo', title: 'MongoDB'},
+    { src: sqlite, className: 'image-sqlite', title: 'SQLite'},
+    { src: mysql, className: 'image-mysql', title: 'MySQL'}
+
 ]
 
 const Skills = () => {
@@ -173,7 +205,7 @@ const Skills = () => {
 
 
     return (
-        <>
+        <div className="entire">
         <div className="browse">
             <h2>Browse Languages</h2>
             {showArrowLanguageBegin && (
@@ -238,8 +270,41 @@ const Skills = () => {
 
         </div>
 
+        <div className="browse">
+            <h2>Browse Technical Skills</h2>
+            {showArrowSkillBegin && (
+                <div className="scroll-indicator-skill-begin" onClick={handleScrollSkillLeft}>
+                    &lt;
+                </div>
+            )}
+
+            <div className="browse-row-skill">
+                {techSkills.map((tech, index) => (
+                    <div key={index} className="placeholder-box">
+                        <img
+                            src={tech.src}
+                            alt={`Placeholder ${index + 1}`}
+                            className={`placeholder-image ${tech.className}`}
+                        />
+                        <div className={`overlay overlay-${index}`}>
+                            <div className="text">{tech.title}</div>
+                        </div>
+                        
+                    </div>
+                    
+                    
+                ))}
+            </div>
+            {showArrowSkill && (
+                <div className="scroll-indicator-skill-end" onClick={handleScrollSkillRight}>
+                    &gt;
+                </div>
+            )}
+
+        </div>
+
         
-        </>
+        </div>
     
     )
 }
