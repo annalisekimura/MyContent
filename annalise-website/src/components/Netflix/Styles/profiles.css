@@ -1,0 +1,37 @@
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.profile-box {
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.profile-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #00000033;
+}
+
+.profile-image {
+    width: 100%;
+    border-radius: 8px;
+    height: 120px;
+
+}
+
+.profile-name {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}

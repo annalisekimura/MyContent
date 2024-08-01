@@ -1,0 +1,28 @@
+.App {
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden; /* Prevents horizontal scrollbar on the body */
+}
+
+
+
+.header {
+  position: absolute; /* Absolute positioning relative to .app-container */
+  top: 0;
+  left: 20px;
+  padding: 20px; /* Space around the text */
+  font-size: 24px; /* Adjust font size as needed */
+  font-weight: bold; /* Make text bold */
+  color: red; /* Text color */
+  background-color: black; /* Background color for contrast */
+  z-index: 1000; /* Ensure it is on top of other content */
+}
