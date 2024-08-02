@@ -1,0 +1,156 @@
+.browse-myTree, .browse-beProductive, .browse-spotPad, .browse-buySell {
+    padding: 20px;
+    position: relative;
+    overflow-y: auto;
+    width: 100vw;
+}
+
+.browse-myTree h2, .browse-beProductive h2, .browse-spotPad h2, .browse-buySell h2 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.entire {
+    margin-top: 100px;
+    height: calc(100vh - 100px);
+    overflow: scroll;
+    margin-bottom: 100px;
+
+}
+
+.browse-row-myTree, .browse-row-beProductive, .browse-row-spotPad, .browse-row-buySell {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 0;
+    scroll-behavior: smooth;
+    width: 100%;
+
+}
+
+.placeholder-box-myTree, .placeholder-box-beProductive, .placeholder-box-spotPad, .placeholder-box-buySell {
+    position: relative;
+    width: 150px;
+    height: 225px; /* Adjust as needed */
+    background-color: #333;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto; /* Prevent boxes from shrinking */
+}
+
+
+.placeholder-image-myTree, .placeholder-image-spotPad, .placeholder-image-buySell {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.placeholder-image-beProductive {
+    width: 150px; /* Fixed width */
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute; /* Position the overlay relative to the placeholder-box */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex; /* Center the text */
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Hide overlay by default */
+    transition: opacity 0.3s ease; /* Smooth transition for showing/hiding */
+}
+
+.placeholder-box-myTree:hover .overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+.placeholder-box-beProductive:hover .overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+.placeholder-box-spotPad:hover .overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+.placeholder-box-buySell:hover .overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+
+
+.text {
+    color: white; /* Text color */
+    font-size: 16px; /* Adjust font size as needed */
+    text-align: center;
+}
+
+.myTree-quiz {
+    object-position: -65px;
+}
+
+.myTree-activities{
+    object-position: 0px;
+}
+
+.beProductive-week, .beProductive-month, .beProductive-news{
+    object-position: -80px 0px;
+}
+
+.beProductive-notes{
+    object-position: -88px;
+
+}
+
+.spotPad-home {
+    object-fit: fill;
+}
+
+.spotPad-scrapbook {
+    object-position: 0;
+}
+
+.spotPad-tracks {
+   object-fit: fill;
+}
+
+.spotPad-colors {
+    object-position: -30px;
+}
+
+.spotPad-draw {
+    object-fit: fill;
+}
+
+.spotPad-rightClick {
+    object-position: -110px;
+}
+
+.spotPad-gif {
+    object-position: -20px;
+}
+
+.spotPad-current {
+    object-position: -120px;
+}
+
+.spotPad-entries, .spotPad-gallery {
+    object-position: bottom left;
+}
+
+.spotPad-saved {
+    object-fit: fill;
+}
+
+.buySell-addSeller, .buySell-sellerPage, .buySell-listingForm, .buySell-editListing, .buySell-sortListings,
+.buySell-listings, .buySell-addBuyer, .buySell-buyListing, .buySell-orders, .buySell-sortOrders {
+    object-fit: fill;
+}
