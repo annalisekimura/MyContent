@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import '../Styles/projects.css';
+import { useState } from "react";
 
 import myTreeLogin from '../Pictures/myTree/login.png';
 import myTreeQuiz from '../Pictures/myTree/quiz.png';
@@ -54,6 +55,7 @@ import buySellSortListings from '../Pictures/buyAndSell/sortListings.png';
 import buySellSortOrders from '../Pictures/buyAndSell/sortOrders.png';
 import buySellWelcome from '../Pictures/buyAndSell/welcome.png';
 
+
 const Projects = () => {
     const myTree = [
         { src: myTreeCreateAccount, className: 'myTree-create', title: 'Create Account' },
@@ -69,7 +71,7 @@ const Projects = () => {
         { src: myTreeNotifications, className: 'myTree-notifications', title: 'Notifications'},
         { src: myTreeManage, className: 'myTree-manage', title: 'Manage Account'},
     ]
-
+    
     const beProductive = [
         { src: beProductiveLogin, className: 'beProductive-login', title: 'Login Page' },
         { src: beProductiveNews, className: 'beProductive-news', title: 'News' },
@@ -80,7 +82,7 @@ const Projects = () => {
         { src: beProductiveFinish, className: 'beProductive-finish', title: 'Finish Task' },
         { src: beProductiveCongrats, className: 'beProductive-congrats', title: 'Congratulations' }
     ]
-
+    
     const spotPad = [
         { src: spotPadWelcome, className: 'spotPad-welcome', title: 'Welcome' },
         { src: spotPadTerms, className: 'spotPad-terms', title: 'Spotify Terms' },
@@ -98,7 +100,7 @@ const Projects = () => {
         { src: spotPadSavedEntries, className: 'spotPad-entries', title: 'Saved States'},
         { src: spotPadSaved, className: 'spotPad-saved', title: 'View Saved Drawing' }
     ]
-
+    
     const buySell = [
         { src: buySellWelcome, className: 'buySell-welcome', title: 'Welcome'},
         { src: buySellAddSeller, className: 'buySell-addSeller', title: 'Add Seller' },
@@ -107,18 +109,278 @@ const Projects = () => {
         { src: buySellEditListing, className: 'buySell-editListing', title: 'Edit Listing'},
         { src: buySellListingForm, className: 'buySell-listingForm', title: 'Listing Form' },
         { src: buySellListings, className: 'buySell-listings', title: 'Listings' },
-
+    
         { src: buySellAddBuyer, className: 'buySell-addBuyer', title: 'Add Buyer' },
         { src: buySellBuyListing, className: 'buySell-buyListing', title: 'Buy Listing' },
         { src: buySellOrders, className: 'buySell-orders', title: 'Orders' },
         { src: buySellSortOrders, className: 'buySell-sortOrders', title: 'Sort Orders'}
     ]
+    
+    
+    //arrows for myTree
+    const [showArrowTree, setShowArrowTree] = useState(true);
+    const [scrollTreeEnd, setScrollTreeEnd] = useState(false);
+    const [scrollTreeBegin, setScrollTreeBegin] = useState(false);
+    const [showArrowTreeBegin, setShowArrowTreeBegin] = useState(false);
+
+    //arrows for beProductive
+    const [showArrowBP, setShowArrowBP] = useState(true);
+    const [scrollBPEnd, setScrollBPEnd] = useState(false);
+    const [scrollBPBegin, setScrollBPBegin] = useState(false);
+    const [showArrowBPBegin, setShowArrowBPBegin] = useState(false);
+
+    //arrows for spotPad
+    const [showArrowSP, setShowArrowSP] = useState(true);
+    const [scrollSPEnd, setScrollSPEnd] = useState(false);
+    const [scrollSPBegin, setScrollSPBegin] = useState(false);
+    const [showArrowSPBegin, setShowArrowSPBegin] = useState(false);
+
+    //arrows for buySell
+    const [showArrowBS, setShowArrowBS] = useState(true);
+    const [scrollBSEnd, setScrollBSEnd] = useState(false);
+    const [scrollBSBegin, setScrollBSBegin] = useState(false);
+    const [showArrowBSBegin, setShowArrowBSBegin] = useState(false);
+
+    
+    // myTree scrolling
+    const handleScrollTreeRight = () => {
+        const row = document.querySelector('.browse-row-myTree');
+
+        row.scrollBy({ left: 160, behavior: 'smooth' }); // Scroll right by 200px
+    };
+
+    const handleScrollTreeLeft = () => {
+        const row = document.querySelector('.browse-row-myTree');
+        row.scrollBy({ left: -160, behavior: 'smooth' }); // Scroll left by 200px
+    };
+
+    const handleScrollTreeEnd = () => {
+        const row = document.querySelector('.browse-row-myTree');
+        const scrollLeft = row.scrollLeft;
+        const scrollWidth = row.scrollWidth;
+        const clientWidth = row.clientWidth;
+        
+        // Check if scrolled to end or start
+        if (scrollLeft + clientWidth >= scrollWidth - 2) {
+            setScrollTreeEnd(true);
+        } else {
+            setScrollTreeEnd(false);
+        }
+        setShowArrowTree(!scrollTreeEnd);
+    };
+
+    const handleScrollTreeBegin = () => {
+        const row = document.querySelector('.browse-row-myTree');
+        const scrollLeft = row.scrollLeft;
+        if(scrollLeft <= 1) {
+            setScrollTreeBegin(true);
+        } else {
+            setScrollTreeBegin(false);
+        }
+        setShowArrowTreeBegin(!scrollTreeBegin);
+    };
+
+    // handle when tree scrolling happens
+    useEffect(() => {
+        const row = document.querySelector('.browse-row-myTree');
+        row.addEventListener('scroll', handleScrollTreeEnd);
+        return () => {
+            row.removeEventListener('scroll', handleScrollTreeEnd);
+        };
+    }, [scrollTreeEnd]);
+
+
+    useEffect(() => {
+        const row = document.querySelector('.browse-row-myTree');
+        row.addEventListener('scroll', handleScrollTreeBegin);
+        return () => {
+            row.removeEventListener('scroll', handleScrollTreeBegin);
+        };
+    }, [scrollTreeBegin]);
+
+    // beProductive scrolling
+    const handleScrollBPRight = () => {
+        const row = document.querySelector('.browse-row-beProductive');
+
+        row.scrollBy({ left: 160, behavior: 'smooth' }); // Scroll right by 200px
+    };
+
+    const handleScrollBPLeft = () => {
+        const row = document.querySelector('.browse-row-beProductive');
+        row.scrollBy({ left: -160, behavior: 'smooth' }); // Scroll left by 200px
+    };
+
+    const handleScrollBPEnd = () => {
+        const row = document.querySelector('.browse-row-beProductive');
+        const scrollLeft = row.scrollLeft;
+        const scrollWidth = row.scrollWidth;
+        const clientWidth = row.clientWidth;
+        
+        // Check if scrolled to end or start
+        if (scrollLeft + clientWidth >= scrollWidth - 2) {
+            setScrollBPEnd(true);
+        } else {
+            setScrollBPEnd(false);
+        }
+        setShowArrowBP(!scrollBPEnd);
+    };
+
+    const handleScrollBPBegin = () => {
+        const row = document.querySelector('.browse-row-beProductive');
+        const scrollLeft = row.scrollLeft;
+        if(scrollLeft <= 1) {
+            setScrollBPBegin(true);
+        } else {
+            setScrollBPBegin(false);
+        }
+        setShowArrowBPBegin(!scrollBPBegin);
+    };
+
+    // handle when bp scrolling happens
+    useEffect(() => {
+        const row = document.querySelector('.browse-row-beProductive');
+        row.addEventListener('scroll', handleScrollBPEnd);
+        return () => {
+            row.removeEventListener('scroll', handleScrollBPEnd);
+        };
+    }, [scrollBPEnd]);
+
+
+    useEffect(() => {
+        const row = document.querySelector('.browse-row-beProductive');
+        row.addEventListener('scroll', handleScrollBPBegin);
+        return () => {
+            row.removeEventListener('scroll', handleScrollBPBegin);
+        };
+    }, [scrollBPBegin]);
+
+    // SpotPad scrolling
+    const handleScrollSPRight = () => {
+        const row = document.querySelector('.browse-row-spotPad');
+
+        row.scrollBy({ left: 160, behavior: 'smooth' }); // Scroll right by 200px
+    };
+
+    const handleScrollSPLeft = () => {
+        const row = document.querySelector('.browse-row-spotPad');
+        row.scrollBy({ left: -160, behavior: 'smooth' }); // Scroll left by 200px
+    };
+
+    const handleScrollSPEnd = () => {
+        const row = document.querySelector('.browse-row-spotPad');
+        const scrollLeft = row.scrollLeft;
+        const scrollWidth = row.scrollWidth;
+        const clientWidth = row.clientWidth;
+        
+        // Check if scrolled to end or start
+        if (scrollLeft + clientWidth >= scrollWidth - 2) {
+            setScrollSPEnd(true);
+        } else {
+            setScrollSPEnd(false);
+        }
+        setShowArrowSP(!scrollSPEnd);
+    };
+
+    const handleScrollSPBegin = () => {
+        const row = document.querySelector('.browse-row-spotPad');
+        const scrollLeft = row.scrollLeft;
+        console.log(scrollLeft);
+        if(scrollLeft <= 1) {
+            setScrollSPBegin(true);
+            
+        } else {
+            setScrollSPBegin(false);
+        }
+        
+        setShowArrowSPBegin(!scrollSPBegin);
+    };
+
+    // handle when spotPad scrolling happens
+    useEffect(() => {
+        const row = document.querySelector('.browse-row-spotPad');
+        row.addEventListener('scroll', handleScrollSPEnd);
+        return () => {
+            row.removeEventListener('scroll', handleScrollSPEnd);
+        };
+    }, [scrollSPEnd]);
+
+
+    useEffect(() => {
+        const row = document.querySelector('.browse-row-spotPad');
+        row.addEventListener('scroll', handleScrollSPBegin);
+        return () => {
+            row.removeEventListener('scroll', handleScrollSPBegin);
+        };
+    }, [scrollSPBegin]);
+
+    // buySell scrolling
+    const handleScrollBSRight = () => {
+        const row = document.querySelector('.browse-row-buySell');
+
+        row.scrollBy({ left: 160, behavior: 'smooth' }); // Scroll right by 200px
+    };
+
+    const handleScrollBSLeft = () => {
+        const row = document.querySelector('.browse-row-buySell');
+        row.scrollBy({ left: -160, behavior: 'smooth' }); // Scroll left by 200px
+    };
+
+    const handleScrollBSEnd = () => {
+        const row = document.querySelector('.browse-row-buySell');
+        const scrollLeft = row.scrollLeft;
+        const scrollWidth = row.scrollWidth;
+        const clientWidth = row.clientWidth;
+        
+        // Check if scrolled to end or start
+        if (scrollLeft + clientWidth >= scrollWidth - 2) {
+            setScrollBSEnd(true);
+        } else {
+            setScrollBSEnd(false);
+        }
+        setShowArrowBS(!scrollBSEnd);
+    };
+
+    const handleScrollBSBegin = () => {
+        const row = document.querySelector('.browse-row-buySell');
+        const scrollLeft = row.scrollLeft;
+        if(scrollLeft <= 1) {
+            setScrollBSBegin(true);
+        } else {
+            setScrollBSBegin(false);
+        }
+        setShowArrowBSBegin(!scrollBSBegin);
+    };
+
+    // handle when tree scrolling happens
+    useEffect(() => {
+        const row = document.querySelector('.browse-row-buySell');
+        row.addEventListener('scroll', handleScrollBSEnd);
+        return () => {
+            row.removeEventListener('scroll', handleScrollBSEnd);
+        };
+    }, [scrollBSEnd]);
+
+
+    useEffect(() => {
+        const row = document.querySelector('.browse-row-buySell');
+        row.addEventListener('scroll', handleScrollBSBegin);
+        return () => {
+            row.removeEventListener('scroll', handleScrollBSBegin);
+        };
+    }, [scrollBSBegin]);
 
 
     return (
         <div className="entire">
             <div className="browse-myTree">
-                <h2>MyTree</h2>
+                <h2>
+                <a className='tree-title' href='https://github.com/bdgillis/CS307-myTree.git'>MyTree</a>
+                </h2>
+                {showArrowTreeBegin && (
+                    <div className="scroll-indicator-tree-begin" onClick={handleScrollTreeLeft}>
+                        &lt;
+                    </div>
+                )}
 
                 <div className="browse-row-myTree">
                     {myTree.map((tree, index) => (
@@ -136,10 +398,22 @@ const Projects = () => {
                         
                     ))}
                 </div>
+                {showArrowTree && (
+                    <div className="scroll-indicator-tree-end" onClick={handleScrollTreeRight}>
+                        &gt;
+                    </div>
+                )}
             </div>
 
             <div className="browse-beProductive">
-                <h2>BeProductive</h2>
+                <h2>
+                    <a className='productive-title' href='https://github.com/annalisekimura/BeProductive.git'>BeProductive</a>
+                </h2>
+                {showArrowBPBegin && (
+                    <div className="scroll-indicator-bp-begin" onClick={handleScrollBPLeft}>
+                        &lt;
+                    </div>
+                )}
 
                 <div className="browse-row-beProductive">
                     {beProductive.map((productive, index) => (
@@ -157,10 +431,22 @@ const Projects = () => {
                         
                     ))}
                 </div>
+                {showArrowBP && (
+                    <div className="scroll-indicator-bp-end" onClick={handleScrollBPRight}>
+                        &gt;
+                    </div>
+                )}
             </div>
 
             <div className="browse-spotPad">
-                <h2>SpotPad</h2>
+                <h2>
+                    <a className='pad-title' href='https://github.com/annalisekimura/SpotPad.git'>SpotPad</a>
+                </h2>
+                {showArrowSPBegin && (
+                    <div className="scroll-indicator-spotPad-begin" onClick={handleScrollSPLeft}>
+                        &lt;
+                    </div>
+                )}
 
                 <div className="browse-row-spotPad">
                     {spotPad.map((pad, index) => (
@@ -178,10 +464,22 @@ const Projects = () => {
                         
                     ))}
                 </div>
+                {showArrowSP && (
+                    <div className="scroll-indicator-spotPad-end" onClick={handleScrollSPRight}>
+                        &gt;
+                    </div>
+                )}
             </div>
 
             <div className="browse-buySell">
-                <h2>BuyAndSell</h2>
+                <h2>
+                    <a className='buySell-title' href='https://github.com/annalisekimura/BuyAndSell.git'>BuyAndSell</a>
+                </h2>
+                {showArrowBSBegin && (
+                    <div className="scroll-indicator-buySell-begin" onClick={handleScrollBSLeft}>
+                        &lt;
+                    </div>
+                )}
 
                 <div className="browse-row-buySell">
                     {buySell.map((item, index) => (
@@ -199,6 +497,11 @@ const Projects = () => {
                         
                     ))}
                 </div>
+                {showArrowBS && (
+                    <div className="scroll-indicator-buySell-end" onClick={handleScrollBSRight}>
+                        &gt;
+                    </div>
+                )}
             </div>
 
         </div>

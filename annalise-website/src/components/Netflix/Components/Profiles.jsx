@@ -4,13 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import purdue from '../Pictures/purdue-logo.png';
 import codeImg from '../Pictures/skills.jpg';
 import gitImg from '../Pictures/github.jpeg';
+import me from '../Pictures/me.png';
 
 
 const profiles = [
     { id: 1, name: 'Projects', image: gitImg },
     { id: 2, name: 'Skills', image: codeImg },
     { id: 3, name: 'Education', image: purdue },
-    { id: 4, name: 'About Me', image: purdue }
+    { id: 4, name: 'About Me', image: me }
 ];
 
 const Profiles = () => {

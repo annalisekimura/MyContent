@@ -88,6 +88,12 @@ const Skills = () => {
     const [scrollSkillBegin, setScrollSkillBegin] = useState(false);
     const [showArrowSkillBegin, setShowArrowSkillBegin] = useState(false);
 
+    //arows for tech
+    const [showArrowTech, setShowArrowTech] = useState(true);
+    const [scrollTechEnd, setScrollTechEnd] = useState(false);
+    const [scrollTechBegin, setScrollTechBegin] = useState(false);
+    const [showArrowTechBegin, setShowArrowTechBegin] = useState(false);
+
 
     // language scrolling
     const handleScrollLanguageRight = () => {
@@ -119,11 +125,14 @@ const Skills = () => {
     const handleScrollLanguageBegin = () => {
         const row = document.querySelector('.browse-row-language');
         const scrollLeft = row.scrollLeft;
+        console.log(scrollLeft);
         if(scrollLeft <= 1) {
             setScrollLanguageBegin(true);
+            
         } else {
             setScrollLanguageBegin(false);
         }
+        
         setShowArrowLanguageBegin(!scrollLanguageBegin);
     };
 
@@ -165,6 +174,45 @@ const Skills = () => {
         setShowArrowSkillBegin(!scrollSkillBegin);
     };
 
+    // technical scrolling
+    const handleScrollTechRight = () => {
+        const row = document.querySelector('.browse-row-tech');
+
+        row.scrollBy({ left: 160, behavior: 'smooth' }); // Scroll right by 200px
+    };
+
+    const handleScrollTechLeft = () => {
+        const row = document.querySelector('.browse-row-tech');
+        row.scrollBy({ left: -160, behavior: 'smooth' }); // Scroll left by 200px
+    };
+
+    const handleScrollTechEnd = () => {
+        const row = document.querySelector('.browse-row-tech');
+        const scrollLeft = row.scrollLeft;
+        const scrollWidth = row.scrollWidth;
+        const clientWidth = row.clientWidth;
+        
+        // Check if scrolled to end or start
+        if (scrollLeft + clientWidth >= scrollWidth - 2) {
+            setScrollTechEnd(true);
+        } else {
+            setScrollTechEnd(false);
+        }
+        setShowArrowTech(!scrollTechEnd);
+    };
+
+    const handleScrollTechBegin = () => {
+        const row = document.querySelector('.browse-row-tech');
+        const scrollLeft = row.scrollLeft;
+        if(scrollLeft <= 1) {
+            setScrollTechBegin(true);
+        } else {
+            setScrollTechBegin(false);
+        }
+        setShowArrowTechBegin(!scrollTechBegin);
+    };
+
+
 
     // handle when language scrolling happens
     useEffect(() => {
@@ -177,6 +225,7 @@ const Skills = () => {
 
 
     useEffect(() => {
+        console.log('now');
         const row = document.querySelector('.browse-row-language');
         row.addEventListener('scroll', handleScrollLanguageBegin);
         return () => {
@@ -201,6 +250,24 @@ const Skills = () => {
             row.removeEventListener('scroll', handleScrollSkillBegin);
         };
     }, [scrollSkillBegin]);
+
+    // handle when tech scrolling happens
+    useEffect(() => {
+        const row = document.querySelector('.browse-row-tech');
+        row.addEventListener('scroll', handleScrollTechEnd);
+        return () => {
+            row.removeEventListener('scroll', handleScrollTechEnd);
+        };
+    }, [scrollTechEnd]);
+
+
+    useEffect(() => {
+        const row = document.querySelector('.browse-row-tech');
+        row.addEventListener('scroll', handleScrollTechBegin);
+        return () => {
+            row.removeEventListener('scroll', handleScrollTechBegin);
+        };
+    }, [scrollTechBegin]);
 
 
 
@@ -272,13 +339,13 @@ const Skills = () => {
 
         <div className="browse">
             <h2>Browse Technical Skills</h2>
-            {showArrowSkillBegin && (
-                <div className="scroll-indicator-skill-begin" onClick={handleScrollSkillLeft}>
+            {showArrowTechBegin && (
+                <div className="scroll-indicator-tech-begin" onClick={handleScrollTechLeft}>
                     &lt;
                 </div>
             )}
 
-            <div className="browse-row-skill">
+            <div className="browse-row-tech">
                 {techSkills.map((tech, index) => (
                     <div key={index} className="placeholder-box">
                         <img
@@ -295,8 +362,8 @@ const Skills = () => {
                     
                 ))}
             </div>
-            {showArrowSkill && (
-                <div className="scroll-indicator-skill-end" onClick={handleScrollSkillRight}>
+            {showArrowTech && (
+                <div className="scroll-indicator-tech-end" onClick={handleScrollTechRight}>
                     &gt;
                 </div>
             )}

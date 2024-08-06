@@ -18,7 +18,7 @@
 
 }
 
-.browse-row-course, .browse-row-current, .browse-row-more {
+.browse-row-courses, .browse-row-current, .browse-row-more {
     display: flex;
     gap: 10px;
     overflow-x: auto;
@@ -38,6 +38,7 @@
     align-items: center;
     justify-content: center;
     flex: 0 0 auto; /* Prevent boxes from shrinking */
+
     background: linear-gradient(45deg, #db3b83, #a472ef);
     color: black;
     font-weight: bold;
@@ -117,4 +118,36 @@
     color: white; /* Text color */
     font-size: 16px; /* Adjust font size as needed */
     text-align: center;
+}
+
+.scroll-indicator-courses-end, .scroll-indicator-more-end {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.scroll-indicator-courses-begin, .scroll-indicator-more-begin {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
 }

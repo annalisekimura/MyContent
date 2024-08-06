@@ -5,7 +5,7 @@
     width: 100vw;
 }
 
-.browse h2 {
+.browse-language h2, .browse-skills h2, .browse-tech h2 {
     margin-bottom: 10px;
     color: #fff;
 }
@@ -20,7 +20,7 @@
 
 }
 
-.browse-row-language, .browse-row-skill {
+.browse-row-language, .browse-row-tech, .browse-row-skill {
     display: flex;
     gap: 10px;
     overflow-x: auto;
@@ -68,7 +68,7 @@
     object-position: -85px center;
 }
 
-.scroll-indicator-language-end, .scroll-indicator-skill-end {
+.scroll-indicator-language-end, .scroll-indicator-tech-end, .scroll-indicator-skill-end {
     position: absolute;
     top: 50%;
     right: 10px;
@@ -84,7 +84,8 @@
     z-index: 10;
 }
 
-.scroll-indicator-language-begin, .scroll-indicator-skill-begin {
+
+.scroll-indicator-language-begin, .scroll-indicator-tech-begin, .scroll-indicator-skill-begin {
     position: absolute;
     top: 50%;
     left: 10px;
@@ -99,6 +100,7 @@
     cursor: pointer;
     z-index: 10;
 }
+
 
 .overlay {
     position: absolute; /* Position the overlay relative to the placeholder-box */
