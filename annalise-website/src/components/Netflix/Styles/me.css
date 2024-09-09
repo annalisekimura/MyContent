@@ -1,0 +1,142 @@
+.browse-leetcode, .browse-hobbies, .browse-personal {
+    padding: 20px;
+    position: relative;
+    overflow-y: auto;
+    width: 100vw;
+}
+
+.browse-leetcode h2, .browse-hobbies h2, .browse-personal h2 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.leetcode-title {
+    color: white;
+    text-decoration: none;
+    
+}
+.leetcode-title:hover {
+    color: #ff0000;
+}
+
+.entire {
+    margin-top: 100px;
+    height: calc(100vh - 100px);
+    overflow: scroll;
+    margin-bottom: 100px;
+
+}
+
+.browse-row-leetcode, .browse-row-hobbies, .browse-row-personal {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 0;
+    scroll-behavior: smooth;
+    width: 100%;
+
+}
+
+.placeholder-box-leetcode {
+    position: relative;
+    width: 150px;
+    height: 225px; /* Adjust as needed */
+    background-color: #333;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto; /* Prevent boxes from shrinking */
+}
+
+.placeholder-box-hobbies, .placeholder-box-personal {
+    position: relative;
+    width: 150px;
+    height: 225px; /* Adjust as needed */
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto; /* Prevent boxes from shrinking */
+
+    background: linear-gradient(45deg, #db3b83, #a472ef);
+    color: black;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+}
+
+.placeholder-image-leetcode {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.placeholder-image-hobbies, .placeholder-image-personal {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    font-size: 2em;
+}
+
+.overlay {
+    position: absolute; /* Position the overlay relative to the placeholder-box */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex; /* Center the text */
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Hide overlay by default */
+    transition: opacity 0.3s ease; /* Smooth transition for showing/hiding */
+}
+
+.placeholder-box-leetcode:hover .overlay, .placeholder-box-hobbies:hover .overlay, .placeholder-box-personal:hover .overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+.text {
+    color: white; /* Text color */
+    font-size: 16px; /* Adjust font size as needed */
+    text-align: center;
+}
+
+.scroll-indicator-leetcode-end {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.scroll-indicator-leetcode-begin {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
